@@ -10,3 +10,38 @@
 	</h2>
 </body>
 </html>
+
+<!-- 1. index.html 에서 전체 목록 보기 클릭 >> ScoreAll 로 get 요청.
+2. ScroeAll.java 에서 /ScoreAll 의 요청을 처리해야함. (어노테이션(@WebServlet(“/ScoreAll”)) 써놓음)
+3. List<Score> all = new ScoreBiz().getScoreAll(); 실행.
+4. getScoreAll() 를 실행하기 위해 ScoreBiz.java 로 이동.
+5. List<Score> all = new ScoreDao(conn).getScoreAll(); 를 실행해야함.
+6. ScoreDao.java 로 이동.
+7. Score 타입의 myscore, all, stmt, rs 선언
+		Score myscore = null;
+		List<Score> all = new ArrayList<>();
+		Statement stmt = null;
+		ResultSet rs = null;
+		쿼리 날림
+		이때 ScoreSql.java 에 저장해놓은 Sql문을 ScoreSql을 implements하여 사용.
+
+		db와 연결통로 만들고 stmt = con.createStatement();
+		쿼리문 날린 결과 rs에 저장 rs = stmt.executeQuery(Score_selectAll);
+8. rs 정보 List<Score> all 에 저장
+
+	while (rs.next()) {
+				myscore = new Score();
+				myscore.setName(rs.getString(1));
+				myscore.setKor(rs.getInt(2));
+				myscore.setEng(rs.getInt(3));
+				myscore.setMat(rs.getInt(4));
+
+				all.add(myscore);
+			}
+9. Score.Dao.java 의 getScoreAll()메서드가 all 리턴
+10. Score.Biz.java 에서 위의 정보를 받아 all 다시 리턴
+11. ScoreAll.java 에서 위의 정보를 받아 request에 “all”속석 value all 저장.
+12. ScoreAll.jsp 에서
+13. all을 받아 sm에 저장.
+<%		ArrayList<Score> sm = (ArrayList<Score>) request.getAttribute("all");      %>
+14. 출력 -->

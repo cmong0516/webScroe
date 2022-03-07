@@ -22,7 +22,7 @@ public class ScoreAll extends HttpServlet {
 		
 		request.setAttribute("all", all);
 		
-		
+		//ScoreAll 로 요청했지만 ScoreAll.jsp 로 request,response를 전송하며 ScoreAll.jsp 를 보여준다.
 		RequestDispatcher rd = request.getRequestDispatcher("ScoreAll.jsp");
 		rd.forward(request,response);
 	}

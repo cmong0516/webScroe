@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ page import="java.util.*, com.entity.*"%>
+	<!-- Jstl쓰려면 이거 필요함 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html >
 <html>
 <head>
@@ -8,9 +11,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%		
-ArrayList<Score> sm = (ArrayList<Score>) request.getAttribute("all");
-	%>
+	<!-- 이거 AAA 나옴 -->
+	${all[0].name}
+	<!-- 이거 AAA 국어점수 나옴 -->
+	${all[0].kor}
+	
+
 	<table border=1 width="90%">
 		<tr>
 			<th>이름</th>
@@ -23,23 +29,20 @@ ArrayList<Score> sm = (ArrayList<Score>) request.getAttribute("all");
 			<th>수정</th>
 			<th>삭제</th>
 		</tr>
-		<%
-			for (Score res : sm) {
-		%>
+		<c:forEach var="score" items="${all}">
+	${score.name}
 		<tr>
-			<td><%=res.getName()%></td>
-			<td><%=res.getKor()%></td>
-			<td><%=res.getEng()%></td>
-			<td><%=res.getMat()%></td>
-			<td><%=res.getTot()%></td>
-			<td><%=res.getAvg()%></td>
-			<td><%=res.getGrade()%></td>
-			<td><a href="ScoreFind?name=<%=res.getName()%>"> 수정 </a></td>
-			<td><a href="ScoreDelete?name=<%=res.getName()%>"> 삭제 </a></td>
+			<td>${score.name }</td>
+			<td>${score.kor }</td>
+			<td>${score.eng }</td>
+			<td>${score.mat }</td>
+			<td>${score.tot }</td>
+			<td>${score.avg }</td>
+			<td>${score.grade }</td>
+			<td><a href="ScoreFind?name=${score.name }"> 수정 </a></td>
+			<td><a href="ScoreDelete?name=${score.name }"> 삭제 </a></td>
 		</tr>
-		<%
-			}
-		%>
+	</c:forEach>
 		<tr>
 			<td align="center" colspan="9">
 			<a href="ScoreInsert.html">입력

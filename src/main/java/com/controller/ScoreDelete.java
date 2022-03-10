@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.biz.ScoreBiz;
 
-@WebServlet("/ScoreDelete")
+//@WebServlet("/ScoreDelete")
 public class ScoreDelete extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

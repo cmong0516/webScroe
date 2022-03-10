@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.biz.ScoreBiz;
 import com.entity.Score;
 
-@WebServlet("/ScoreUpdate")
+//@WebServlet("/ScoreUpdate")
 public class ScoreUpdate extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

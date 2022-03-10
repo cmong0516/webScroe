@@ -11,6 +11,7 @@
 </body>
 </html>
 
+
 <!-- 1. index.html 에서 전체 목록 보기 클릭 >> ScoreAll 로 get 요청.
 2. ScroeAll.java 에서 /ScoreAll 의 요청을 처리해야함. (어노테이션(@WebServlet(“/ScoreAll”)) 써놓음)
 3. List<Score> all = new ScoreBiz().getScoreAll(); 실행.
@@ -24,18 +25,15 @@
 		ResultSet rs = null;
 		쿼리 날림
 		이때 ScoreSql.java 에 저장해놓은 Sql문을 ScoreSql을 implements하여 사용.
-
 		db와 연결통로 만들고 stmt = con.createStatement();
 		쿼리문 날린 결과 rs에 저장 rs = stmt.executeQuery(Score_selectAll);
 8. rs 정보 List<Score> all 에 저장
-
 	while (rs.next()) {
 				myscore = new Score();
 				myscore.setName(rs.getString(1));
 				myscore.setKor(rs.getInt(2));
 				myscore.setEng(rs.getInt(3));
 				myscore.setMat(rs.getInt(4));
-
 				all.add(myscore);
 			}
 9. Score.Dao.java 의 getScoreAll()메서드가 all 리턴

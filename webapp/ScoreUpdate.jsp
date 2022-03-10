@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ page import="java.util.*, com.entity.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,43 +14,38 @@ input {
 </style>
 </head>
 <body>
-	<%
-	Score my_score = (Score) request.getAttribute("find");
-	%>
+	${find.name } ${find["name"] } ${find.kor} ${find.eng} ${find.mat}
 	<form action="ScoreUpdate">
 		<table border=1 width="70%"
 			style="height: 400px; border-style: solid; font-size: x-large;">
 			<tr>
 				<th>이름</th>
-				<td><%=my_score.getName()%> 
-				<input type="hidden" name="name" value="<%=my_score.getName()%>" /></td>
+				<td>${find.name}<input type="hidden" name="name"
+					value="${find.name}" /></td>
 			</tr>
 			<tr>
 				<th>국어</th>
-				<td><input type="text" name="kor"
-					value="<%=my_score.getKor()%>"></td>
+				<td><input type="text" name="kor" value="${find.kor}"></td>
 			</tr>
 			<tr>
 				<th>영어</th>
-				<td><input type="text" name="eng"
-					value="<%=my_score.getEng()%>"></td>
+				<td><input type="text" name="eng" value="${find.eng}"></td>
 			</tr>
 			<tr>
 				<th>수학</th>
-				<td><input type="text" name="mat"
-					value="<%=my_score.getMat()%>"></td>
+				<td><input type="text" name="mat" value="${find.mat}"></td>
 			</tr>
 			<tr>
 				<th>총 점</th>
-				<td><%=my_score.getTot()%></td>
+				<td>${find.tot}</td>
 			</tr>
 			<tr>
 				<th>평균</th>
-				<td><%=my_score.getAvg()%></td>
+				<td>${find.avg}</td>
 			</tr>
 			<tr>
 				<th>학점</th>
-				<td><%=my_score.getGrade()%></td>
+				<td>${find.grade}</td>
 			</tr>
 			<tr>
 				<td align="center" colspan="2"><input type="submit" value="수정" />
@@ -59,8 +55,6 @@ input {
 	</form>
 </body>
 </html>
-
-
 
 
 

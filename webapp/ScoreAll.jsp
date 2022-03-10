@@ -17,7 +17,7 @@
 		c:set sm이라는 이름으로 requestAttribute의 "all"을 저장하겠다.
 		<c:set var="sm" value="${requestScope.all}" />
 	 -->
-	
+
 	<table border=1 width="90%">
 		<tr>
 			<th>이름</th>
@@ -30,6 +30,15 @@
 			<th>수정</th>
 			<th>삭제</th>
 		</tr>
+		
+		
+		<%-- 
+			JSTL forEach : JSTL for loop (반복문)
+			items : 대상 배열 또는 컬렉션
+			var : 요소를 저장할 변수
+			varStatus : 상태용 변수 index(0부터) or count(1부터)
+			<c:forEach var="res" items="${sm}" varStatus="status">
+ 		--%>
 		<c:forEach var="score" items="${all}">
 	${score.name}
 		<tr>
@@ -44,6 +53,23 @@
 				<td><a href="ScoreDelete?name=${score.name }"> 삭제 </a></td>
 			</tr>
 		</c:forEach>
+		
+<%-- 		<!-- <c:forEach var="res" items="${sm}" varStatus="status">
+			<tr>
+				<!--  ${res.name}와 동일-->
+				<td>${res.getName()}</td>
+				<td>${res.getKor()}</td>
+				<td>${res.getEng()}</td>
+				<td>${res.getMat()}</td>
+				<td>${res.getTot()}</td>
+				<td>${res.getAvg()}</td>
+				<td>${res.getGrade()}</td>
+				<td><a href="ScoreFind?name=${res.getName()}"> 수정 </a></td>
+				<td><a href="ScoreDelete?name=${res.getName()}"> 삭제 </a></td>
+			</tr>
+		</c:forEach> --> --%>
+
+
 		<tr>
 			<td align="center" colspan="9"><a href="ScoreInsert.html">입력
 			</a></td>

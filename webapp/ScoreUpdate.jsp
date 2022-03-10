@@ -14,7 +14,7 @@ input {
 </style>
 </head>
 <body>
-	${find.name } ${find["name"] } ${find.kor} ${find.eng} ${find.mat}
+	<%-- <% Score my_score = (Score) request.getAttribute("find"); %> --%>
 	<form action="ScoreUpdate">
 		<table border=1 width="70%"
 			style="height: 400px; border-style: solid; font-size: x-large;">
